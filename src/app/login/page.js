@@ -1,11 +1,10 @@
 
+import Head from "next/head";
 import Link from "next/link";
 
 function page() {
   return (
     <>
-        <title>Pacific Health System - login</title>
-        <link rel="shortcut icon" href="/logo.png" />
       <div className="h-screen flex justify-center items-center">
         <div className="w-[80%] lg:w-[35%] p-2 shadow-lg bg-[#403d6c]/20 rounded-md">
         <h1 className="font-semibold text-2xl py-2 text-[#3f3d6c] px-5">Welcome to Pacific <span className="text-[#d8314a]">Health</span> System</h1>

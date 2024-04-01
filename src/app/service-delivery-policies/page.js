@@ -1,7 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const ServiceDeliveryPolicies = () => {
+
+  const router = useRouter();
+
   const [serviceDelivery, setServiceDelivery] = useState({
     name: "",
     userName: "",
@@ -15,7 +19,9 @@ const ServiceDeliveryPolicies = () => {
   });
 
   const handleChange = (e) => {};
-  const handleSubmit = async (next) => {};
+  const handleSubmit = (next) => {
+    router.push("/orientation-checklist");
+  };
   return (
     <>
       <div className="w-[80%] p-3 mx-auto">
@@ -158,24 +164,14 @@ const ServiceDeliveryPolicies = () => {
         </div>
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !Object.keys(serviceDelivery).every((key) => {
-                return Boolean(serviceDelivery[key]);
-              })
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !Object.keys(serviceDelivery).every((key) => {
-                return Boolean(serviceDelivery[key]);
-              })
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

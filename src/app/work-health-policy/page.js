@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const thisPolicyList = [
@@ -52,6 +53,9 @@ const receiptAndAcknowledgementList = [
 ];
 
 const WorkHealthPolicy = () => {
+
+  const router = useRouter();
+
   const [workHealthPolicy, setWorkHealthPolicy] = useState({
     signature: '',
     date: '',
@@ -62,7 +66,7 @@ const WorkHealthPolicy = () => {
     setWorkHealthPolicy({...workHealthPolicy, [name]: value });
   }
   const handleSubmit = async (next) => {
-      
+      router.push("/safety-checklist");
    }
   return (
     <>
@@ -236,24 +240,14 @@ const WorkHealthPolicy = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !Object.keys(workHealthPolicy).every((key) => {
-                return Boolean(workHealthPolicy[key]);
-              })
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !Object.keys(workHealthPolicy).every((key) => {
-                return Boolean(workHealthPolicy[key]);
-              })
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white "
           >
             Save & Continue
           </button>

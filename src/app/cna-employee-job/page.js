@@ -4,16 +4,13 @@ import { useState } from "react";
 
 function page() {
 
-    const {push} = useRouter();
+    const router = useRouter();
     function handleChange(){
 
     }
 
     function handleSubmit(next){
-      if (next == "nextForm") {
-        console.log(typeof next);
-        push("/form3");
-      }
+      router.push("/staff-miscount");
     }
 
     const CNAJOb = [
@@ -262,13 +259,13 @@ function page() {
      <div className="flex w-full my-5 mx-auto justify-between items-center">
        <button
          onClick={handleSubmit}
-         className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+         className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
        >
          Save & Exit
        </button>
        <button
          onClick={() => handleSubmit("nextForm")}
-         className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+         className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
        >
          Save & Continue
        </button>

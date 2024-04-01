@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const codeOfEthicsList = [
@@ -39,6 +40,8 @@ const codeOfEthicsList = [
 
 const CodeOfEthics = () => {
 
+  const router = useRouter();
+
   const [codeOfEthics, setCodeOfEthics] = useState({
     empolyeeSignature: '',
     date: '',
@@ -49,7 +52,7 @@ const CodeOfEthics = () => {
   }
   
   const handleSubmit = async (next) => {
-    
+    router.push("/service-delivery-policies");
   }
 
   return (
@@ -90,24 +93,14 @@ const CodeOfEthics = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !Object.keys(codeOfEthics).every((key) => {
-                return Boolean(codeOfEthics[key]);
-              })
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !Object.keys(codeOfEthics).every((key) => {
-                return Boolean(codeOfEthics[key]);
-              })
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

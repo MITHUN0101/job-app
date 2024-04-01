@@ -1,6 +1,14 @@
-
+"use client";
+import { useRouter } from "next/navigation";
 
 const DirectDepositEnrollment = () => {
+  
+  const router = useRouter();
+
+  function handleSubmit(){
+    router.push("/withholding-certificate");
+  }
+
   return (
     <>
       <div className="w-[80%] mx-auto py-3">
@@ -399,12 +407,13 @@ const DirectDepositEnrollment = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            onClick={handleSubmit}
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

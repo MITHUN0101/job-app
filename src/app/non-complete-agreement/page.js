@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const EmployeeCovenantsList = [
@@ -13,6 +14,8 @@ const EmployeeCovenantsList = [
 ];
 
 const NonCompleteAgreement = () => {
+
+  const router = useRouter();
 
   const [nonCompleteAgreement, setNonCompleteAgreement] = useState({
     day: '',
@@ -30,8 +33,8 @@ const NonCompleteAgreement = () => {
   const handleChange = (e) => {
     
   }
-  const handleSubmit = async (next) => {
-    
+  const handleSubmit = () => {
+    router.push("/phs-background-check")
   }
 
 
@@ -217,24 +220,14 @@ const NonCompleteAgreement = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !Object.keys(nonCompleteAgreement).every((key) => {
-                return Boolean(nonCompleteAgreement[key]);
-              })
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white "
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !Object.keys(nonCompleteAgreement).every((key) => {
-                return Boolean(nonCompleteAgreement[key]);
-              })
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white "
           >
             Save & Continue
           </button>

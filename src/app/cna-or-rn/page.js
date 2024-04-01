@@ -1,14 +1,17 @@
 "use client"
+  import { useRouter } from "next/navigation";
+
 import React from "react";
 
-const Cnaorrn = () => {
+
+const page = () => {
+  const router = useRouter();
   const handleSubmit = (next) => {
-    
+    router.push("/phs-cpr");
   };
   return (
     <>
       <div className="w-[80%] mx-auto py-3">
-        <iframe src="/PHS-CPR.pdf" width="100%" height="500px" />
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
             onClick={handleSubmit}
@@ -28,4 +31,4 @@ const Cnaorrn = () => {
   );
 };
 
-export default Cnaorrn;
+export default page;

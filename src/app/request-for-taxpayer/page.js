@@ -1,4 +1,16 @@
+"use client"
+
+import { useRouter } from "next/navigation";
+
+
 const RequestForTaxpayer = () => {
+    const router = useRouter();
+
+
+    function handleSubmit(){
+      router.push("/employment-eligibility-verification")
+    }
+
     return (
       <>
         <div className="w-[90%] mx-auto">
@@ -1364,6 +1376,20 @@ const RequestForTaxpayer = () => {
               </p>
             </div>
           </div>
+          <div className="flex w-full my-5 mx-auto justify-between items-center">
+          <button
+            onClick={handleSubmit}
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
+          >
+            Save & Exit
+          </button>
+          <button
+            onClick={() => handleSubmit("nextForm")}
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
+          >
+            Save & Continue
+          </button>
+        </div>
         </div>
       </>
     );

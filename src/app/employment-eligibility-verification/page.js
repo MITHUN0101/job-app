@@ -1,3 +1,5 @@
+"use client"
+
 const listAListItem = [
     "U.S. Passport or U.S. Passport Card",
     `Permanent Resident Card or Alien 
@@ -84,6 +86,11 @@ const listAListItem = [
   ];
   
   const EmploymentEligibilityVerification = () => {
+
+    function handleSubmit(){
+
+    }
+
     return (
       <>
         <div className="w-[90%] mx-auto">
@@ -809,6 +816,20 @@ const listAListItem = [
               receipts
             </h2>
           </div>
+          <div className="flex w-full my-5 mx-auto justify-between items-center">
+          <button
+            onClick={handleSubmit}
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
+          >
+            Save & Exit
+          </button>
+          <button
+            onClick={() => handleSubmit("nextForm")}
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white "
+          >
+            Submit
+          </button>
+        </div>
         </div>
       </>
     );

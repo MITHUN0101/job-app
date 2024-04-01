@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const pcajobDescription = [
   `- Tub Bathing`,
@@ -21,6 +22,7 @@ const pcajobDescription = [
 ];
 
 const Pcajob = () => {
+  const router = useRouter();
 
   const [PCADetails, setPCADetails] = useState({
     userName: "",
@@ -35,19 +37,7 @@ const Pcajob = () => {
     setPCADetails({ ...PCADetails, [name]: value });
   };
   const handleSubmit = async (next) => {
-    try {
-      const savePCAJbDetails = await axios.post("/api/pcajob", {
-        PCADetails,
-        userId: User._id,
-      });
-      localStorage.setItem("formFilled", "nurse-rn-staff");
-      if (next) {
-        router.push("/nurse-rn-staff");
-      }
-      console.log(savePCAJbDetails);
-    } catch (error) {
-      console.log(error);
-    }
+    router.push("/nurse-rn-staff");
   };
 
   return (
@@ -177,26 +167,14 @@ const Pcajob = () => {
 
       <div className="flex w-full my-5 mx-auto justify-between items-center">
         <button
-          disabled={
-            !PCADetails.userName ||
-            !PCADetails.name ||
-            !PCADetails.applicantSignature ||
-            !PCADetails.date1
-          }
           onClick={handleSubmit}
-          className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+          className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
         >
           Save & Exit
         </button>
         <button
-          disabled={
-            !PCADetails.userName ||
-            !PCADetails.name ||
-            !PCADetails.applicantSignature ||
-            !PCADetails.date1
-          }
           onClick={() => handleSubmit("nextForm")}
-          className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+          className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
         >
           Save & Continue
         </button>

@@ -1,10 +1,13 @@
 "use client"
 // import axios from "axios";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 // import { useSelector } from "react-redux";
 
 const EmergencyContact = () => {
+
+  const router = useRouter();
+
   const [emergencyContact, setEmergencyContact] = useState({
     staffName: "",
     title: "",
@@ -22,8 +25,8 @@ const EmergencyContact = () => {
     const { value, name } = e.target;
     setEmergencyContact({ ...emergencyContact, [name]: value });
   };
-  const handleSubmit = async (next) => {
-    
+  const handleSubmit = (next) => {
+    router.push("/work-health-policy");
   }
   return (
     <>
@@ -84,24 +87,14 @@ const EmergencyContact = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !Object.keys(emergencyContact).every((key) => {
-                return Boolean(emergencyContact[key]);
-              })
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !Object.keys(emergencyContact).every((key) => {
-                return Boolean(emergencyContact[key]);
-              })
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

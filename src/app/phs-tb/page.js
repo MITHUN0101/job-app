@@ -1,8 +1,13 @@
 "use client"
+
+import { useRouter } from "next/navigation";
+
 const PHSTB = () => {
+
+    const router = useRouter();
     const handleSubmit = (next) => {
-      
-    }
+      router.push("/emergency-contact")
+    } 
   return (
     <>
       <div className="w-[80%] py-2 mx-auto">
@@ -10,13 +15,13 @@ const PHSTB = () => {
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

@@ -1,6 +1,9 @@
-"use client"
+"use client";
+// import axios from "axios";
 import Head from "next/head";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+// import { useSelector } from "react-redux";
 
 const nurseJobDities = [
   `Identifies client care requirements by establishing personal rapport
@@ -81,6 +84,8 @@ const NurseRNStaff = () => {
     date: "",
   });
 
+  const router = useRouter();
+  // const User = useSelector((state) => state.user.userInfo);
 
 
   const handleChange = (e) => {
@@ -88,14 +93,16 @@ const NurseRNStaff = () => {
     setNurseStaffDetails({ ...nurseStaffDetails, [name]: value });
   };
 
-  const handleSubmit = async (next) => {
-
+  const handleSubmit = (next) => {
+    router.push("/cna-employee-job");
   };
 
   return (
     <>
-       <title>Pacific Health System - Nurse-RN-Staff</title>
+       <Head>
+        <title>Pacific Health System - Nurse-RN-Staff</title>
         <link rel="shortcut icon" href="/logo.png" />
+      </Head>
       <div className="p-3 w-[80%] mx-auto">
         <h3 className="text-lg font-semibold my-3">DESCRIPTION: NURSE</h3>
 
@@ -190,7 +197,6 @@ const NurseRNStaff = () => {
             onChange={handleChange}
             className="border-b border-black px-2 outline-none w-[35%]"
           />
-          Date:
           <input
             onChange={handleChange}
             type="text"
@@ -202,28 +208,14 @@ const NurseRNStaff = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !nurseStaffDetails.nurseStaffSignature ||
-              !nurseStaffDetails.date ||
-              !nurseStaffDetails.staffSignature ||
-              !nurseStaffDetails.userName ||
-              !nurseStaffDetails.staffDate
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !nurseStaffDetails.nurseStaffSignature ||
-              !nurseStaffDetails.date ||
-              !nurseStaffDetails.staffSignature ||
-              !nurseStaffDetails.userName ||
-              !nurseStaffDetails.staffDate
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

@@ -25,3 +25,24 @@ body {
     text-wrap: balance;
   }
 }
+
+.applicantForm__div{
+  background: gray;
+}
+.application__formWrapper{    
+  width: 65%;
+  margin: 0 auto;
+}
+.fullName__wrapper{
+  width: 55%;
+}
+.date__wrapper{
+  width: 35%;
+}
+.employment__formAddress{
+  width: 93%;
+  margin: 13px auto;
+}
+.employment__dataAvailable{
+  width: 30%;    
+}

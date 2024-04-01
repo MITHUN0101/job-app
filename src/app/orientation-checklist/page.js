@@ -1,7 +1,11 @@
 "use client"
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const OrientationChecklist = () => {
+
+  const router = useRouter();
+
   const [orientationDetails, setOrientationDetails] = useState({
     name1: '',
     name2: '',
@@ -21,8 +25,8 @@ const OrientationChecklist = () => {
     const { name, value } = e.target;
     setOrientationDetails({ ...orientationDetails, [name]: value });
   }
-  const handleSubmit = async (next) => {
-    console.log(orientationDetails);
+  const handleSubmit = async () => {
+    router.push("/non-complete-agreement");
   }
 
   return (
@@ -116,24 +120,14 @@ const OrientationChecklist = () => {
 
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
-            disabled={
-              !Object.keys(orientationDetails).every((key) => {
-                return Boolean(orientationDetails[key]);
-              })
-            }
             onClick={handleSubmit}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
           >
             Save & Exit
           </button>
           <button
-            disabled={
-              !Object.keys(orientationDetails).every((key) => {
-                return Boolean(orientationDetails[key]);
-              })
-            }
             onClick={() => handleSubmit("nextForm")}
-            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white"
           >
             Save & Continue
           </button>

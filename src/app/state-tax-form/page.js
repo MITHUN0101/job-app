@@ -1,4 +1,13 @@
+"use client"
+import { useRouter } from "next/navigation";
+
 const StateTaxForm = () => {
+
+    const router = useRouter();
+
+    function handleSubmit(){
+      router.push("request-for-taxpayer");
+    }
     return (
       <div>
         <div className="w-[85%] mx-auto py-3">
@@ -454,8 +463,8 @@ const StateTaxForm = () => {
               //   !CNAStaffDetails.name ||
                 //!CNAStaffDetails.empolyeeDate
               // }
-              // onClick={handleSubmit}
-              className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={handleSubmit}
+              className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white"
             >
               Save & Exit
             </button>
@@ -466,8 +475,8 @@ const StateTaxForm = () => {
               //   !CNAStaffDetails.name ||
               //   !CNAStaffDetails.empolyeeDate
               //  }
-              // onClick={() => handleSubmit("nextForm")}
-              className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={() => handleSubmit("nextForm")}
+              className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white "
             >
               Save & Continue
             </button>
