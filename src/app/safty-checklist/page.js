@@ -1,7 +1,5 @@
-import axios from "axios";
-import { useRouter } from "next/router";
+"use client"
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 const SaftyCheckList = () => {
   const [saftyDetails, setSaftyDetails] = useState({
@@ -17,26 +15,11 @@ const SaftyCheckList = () => {
     agencySignature: "Pacific Health System",
     agencyDate: "",
   });
-  const User = useSelector((state) => state.user.userInfo);
-  const router = useRouter();
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSaftyDetails({ ...saftyDetails, [name]: value });
+    
   };
   const handleSubmit = async (next) => {
-    try {
-      const saveSaftyDetails = await axios.post("/api/saftydetails", {
-        saftyDetails,
-        userId: User._id,
-      });
-      localStorage.setItem("formFilled", "safty-certificate");
-      if (next) {
-        router.push("/safty-certificate");
-      }
-    } catch (error) {
-      console.log(error);
-      throw new Error(error);
-    }
+    
    }
   return (
     <>

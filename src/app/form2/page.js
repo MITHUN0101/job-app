@@ -1,15 +1,19 @@
 "use client" 
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 function page() {
 
+    const {push} = useRouter();
     function handleChange(){
 
     }
 
-    function handleSubmit(){
-
+    function handleSubmit(next){
+      if (next == "nextForm") {
+        console.log(typeof next);
+        push("/form3");
+      }
     }
 
     const CNAJOb = [
@@ -257,24 +261,12 @@ function page() {
      </div>
      <div className="flex w-full my-5 mx-auto justify-between items-center">
        <button
-         disabled={
-           !CNAStaffDetails.userName ||
-           !CNAStaffDetails.empolyeeSignature ||
-           !CNAStaffDetails.name ||
-           !CNAStaffDetails.empolyeeDate
-         }
          onClick={handleSubmit}
          className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white disabled:opacity-60 disabled:cursor-not-allowed"
        >
          Save & Exit
        </button>
        <button
-          disabled={
-           !CNAStaffDetails.userName ||
-           !CNAStaffDetails.empolyeeSignature ||
-           !CNAStaffDetails.name ||
-           !CNAStaffDetails.empolyeeDate
-          }
          onClick={() => handleSubmit("nextForm")}
          className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
        >

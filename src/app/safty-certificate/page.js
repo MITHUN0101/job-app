@@ -1,35 +1,18 @@
-import axios from "axios";
+"use client"
 import Image from "next/image";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 const SaftyCertificate = () => {
   const [saftyCertificate, setSaftyCertificate] = useState({
     employer:"Pacific Health System",
     date:"",
   });
-  const User = useSelector((state) => state.user.userInfo);
-  const router = useRouter();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSaftyCertificate({ ...saftyCertificate, [name]: value });
+    
   };
   const handleSubmit = async (next) => {
-    try {      
-      const saveSaftyCertificate = await axios.post('/api/saftycertificate', {
-        userId: User._id,
-        saftyCertificate,
-      });
-      localStorage.setItem("formFilled", "direct-deposit-enrollment");
-      if (next) {
-        router.push("/direct-deposit-enrollment");
-      }
-    } catch (error) {
-      console.log(error)
-      throw new Error(error);
-    }
+    
   };
   return (
     <>

@@ -1,7 +1,5 @@
-import axios from "axios";
-import { useRouter } from "next/router";
+"use client"
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 const thisPolicyList = [
   `Shows the commitment of Pacific Health Systems’ management and workers to health and safety`,
@@ -59,25 +57,12 @@ const WorkHealthPolicy = () => {
     date: '',
     printName: 'Pacific Health System',
   });
-  const User = useSelector((state) => state.user.userInfo);
-  const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setWorkHealthPolicy({...workHealthPolicy, [name]: value });
   }
   const handleSubmit = async (next) => {
-    try {
-      const saveWorkHealthPolicy = await axios.post('/api/workhealthpolicy', {
-        userId: User._id,
-        workHealthPolicy
-      });
-      localStorage.setItem('formFilled', 'safty-checklist');
-      if (next) {
-        router.push('/safty-checklist');
-      }
-    } catch (error) {
-      throw new Error(error)
-    }    
+      
    }
   return (
     <>

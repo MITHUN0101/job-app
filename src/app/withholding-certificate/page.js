@@ -1,7 +1,5 @@
-import axios from "axios";
-import { useRouter } from "next/router";
+"use client";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 const thisPolicyList = [
   `Shows the commitment of Pacific Health Systems’ management and workers to health and safety`,
@@ -55,30 +53,14 @@ const receiptAndAcknowledgementList = [
 
 const WorkHealthPolicy = () => {
   const [workHealthPolicy, setWorkHealthPolicy] = useState({
-    signature: '',
-    date: '',
-    printName: 'Pacific Health System',
+    signature: "",
+    date: "",
+    printName: "Pacific Health System",
   });
-  const User = useSelector((state) => state.user.userInfo);
-  const router = useRouter();
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setWorkHealthPolicy({...workHealthPolicy, [name]: value });
-  }
-  const handleSubmit = async (next) => {
-    try {
-      const saveWorkHealthPolicy = await axios.post('/api/workhealthpolicy', {
-        userId: User._id,
-        workHealthPolicy
-      });
-      localStorage.setItem('formFilled', 'safty-checklist');
-      if (next) {
-        router.push('/safty-checklist');
-      }
-    } catch (error) {
-      throw new Error(error)
-    }    
-   }
+    
+  };
+  const handleSubmit = async (next) => {};
   return (
     <>
       <div className="w-[80%] py-2 mx-auto">
@@ -224,23 +206,33 @@ const WorkHealthPolicy = () => {
 
         <div className="flex justify-start items-center space-x-5 my-8">
           <div className="flex flex-col justify-start items-start space-y-3 w-[30%]">
-            <input type="text" name="signature" onChange={handleChange} value={workHealthPolicy.signature} className="border-b border-blue-500 outline-none px-2 w-full" />
+            <input
+              type="text"
+              name="signature"
+              onChange={handleChange}
+              value={workHealthPolicy.signature}
+              className="border-b border-blue-500 outline-none px-2 w-full"
+            />
             <label className="text-blue-500 font-semibold text-lg">
               (Signature)
             </label>
           </div>
           <div className="flex flex-col justify-start items-start space-y-3 w-[20%]">
-            <input type="text" value={workHealthPolicy.date} name="date" onChange={handleChange} className="border-b border-blue-500 outline-none px-2 w-full" />
+            <input
+              type="text"
+              value={workHealthPolicy.date}
+              name="date"
+              onChange={handleChange}
+              className="border-b border-blue-500 outline-none px-2 w-full"
+            />
             <label className="text-blue-500 font-semibold text-lg">Date</label>
           </div>
         </div>
 
         <div className="flex flex-col justify-start items-start space-y-3 my-5">
           <input
-            value={
-              workHealthPolicy.printName
-            }
-            name='printName'
+            value={workHealthPolicy.printName}
+            name="printName"
             readOnly
             className="border-b text-center py-1 text-4xl pacificHealthSystemSignature  border-black px-2 outline-none"
           />

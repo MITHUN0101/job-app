@@ -1,8 +1,5 @@
-import axios from "axios";
-import Head from "next/head";
-import { useRouter } from "next/router";
+"use client"
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 const StaffMiscount = () => {
   const [staffMiscount, setStaffMiscount] = useState({
@@ -20,35 +17,19 @@ const StaffMiscount = () => {
     notaryDay2: "",
     notaryYear: "",
   });
-  const User = useSelector((state) => state.user.userInfo);
-  const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setStaffMiscount({ ...staffMiscount, [name]: value });
   };
   const handleSubmit = async (next) => {
-    try {
-      const saveStaffMiscount = await axios.post('/api/staffmissconduct', {
-        staffMiscount,
-        userId:User._id,
-      });
-      localStorage.setItem('formFilled', 'code-of-ethics');
-      if (next) {
-        router.push('/code-of-ethics');
-      }
-      console.log(saveStaffMiscount);
-    } catch (error) {
-      console.log(error)
-    }
+    
   };
 
   return (
     <>
-      <Head>
-        <title>Pacific Health System - Staff-misconduct</title>
+      <title>Pacific Health System - Staff-misconduct</title>
         <link rel="shortcut icon" href="/logo.png" />
-      </Head>
       <div className="w-[80%] mx-auto my-4">
         <h3 className="text-2xl font-normal my-5">
           STAFF MISCONDUCT ABUSE STATEMENT FORM

@@ -1,4 +1,3 @@
-
 const employmentForm = () => {
   return (
     <div className="p-3">
@@ -1732,11 +1731,11 @@ const employmentForm = () => {
         </div>
       </div>
 
-
       {/* <div className="flex w-[75%] mx-auto justify-between items-center">
         <button className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white">Save & Exit</button>
         <Link href='/pcajob' className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white">Save & Continue</Link>
       </div> */}
+
     </div>
   );
 };
