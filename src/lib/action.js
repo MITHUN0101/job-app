@@ -1,18 +1,19 @@
+"use server";
+
+import { signIn } from "./auth";
 import { User } from "./model";
 import { connectToDb } from "./utils";
-import { reDitectToFirstPage } from "./allFunc";
-import { val } from "./allFunc";
 import bcrypt from "bcryptjs";
 // import signIn from "next-auth";
 
-export const registerFunc = async (formData) => {
-  "use server";
+export const registerFunc = async (previousState,formData) => {
+
   const { name, email, phone, password, confirmRepeat } =
     Object.fromEntries(formData);
   console.log(name, email, phone, password, confirmRepeat);
 
   if (password !== confirmRepeat) {
-    return "Passwod dose not match";
+    return {error:"Passwod dose not match"};
   }
 
   try {
@@ -21,7 +22,7 @@ export const registerFunc = async (formData) => {
     const user = await User.findOne({ email });
 
     if (user) {
-      return "user already exist";
+      return {error:"user already exist"};
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -35,26 +36,55 @@ export const registerFunc = async (formData) => {
     });
 
     await newUser.save();
+
+    return {success:true};
+    console.log("saved to database!");
   } catch (err) {
     console.log(err);
     return { error: "somthing went wrong!" };
   }
 };
 
-export const loginFunc = async (formData) => {
-  "use server";
+
+/*==========================Login actions============================= */
+
+export const loginFunc = async (previousData,formData) => {
 
   const { email, password } = Object.fromEntries(formData);
   console.log(email, password);
-  //   connectToDb();
 
-  //   let verify = await User.findOne({ email });
-  //   console.log(verify);
+  // try {
+  //   console.log(signIn,"HELLO");
+  //   await signIn("credentials", { email, password });
+  // } catch (err) {
+  //   console.log(err,"hello");
 
-  try {
-    await signIn("credentials", { username, password });
-  } catch (err) {
-    console.log(err);
-    return { error: "something went wrong!" };
+  //   if(err.message.includes["CredentialsSignin"]){
+  //     return {error: "Invalid username or password"}
+  //   }
+
+  //   return { error: "something went wrong!" };
+  // }
+
+  connectToDb();
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return {error:"username is incorrect"};
   }
+
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(password, salt);
+
+  if(!bcrypt.compare(hashPassword, user.password)){
+    return {error:"usename or password is incorrect"};
+  }
+
+  const logedInUser = {
+    name:user.name,
+    email:user.email,
+  }
+  
+  return {success:true, logedInUser};
 };
