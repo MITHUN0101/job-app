@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-function page() {
+function Page() {
 
     const router = useRouter();
     function handleChange(){
@@ -275,4 +275,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

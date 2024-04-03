@@ -4,7 +4,7 @@
 import React from "react";
 
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const handleSubmit = (next) => {
     router.push("/phs-cpr");
@@ -31,4 +31,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const employmentForm = () => {
+const EmploymentForm = () => {
   const router = useRouter();
 
   function handleSubmit() {
@@ -1761,4 +1761,4 @@ const employmentForm = () => {
     </div>
   );
 };
-export default employmentForm;
+export default EmploymentForm;
