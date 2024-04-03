@@ -1,4 +1,13 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 const employmentForm = () => {
+  const router = useRouter();
+
+  function handleSubmit() {
+    router.push("/non-complete-agreement");
+  }
+
   return (
     <div className="p-3">
       <h3 className="text-2xl font-semibold my-3">Employment Application</h3>
@@ -1735,7 +1744,20 @@ const employmentForm = () => {
         <button className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white">Save & Exit</button>
         <Link href='/pcajob' className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white">Save & Continue</Link>
       </div> */}
-
+      <div className="flex my-5 mx-auto justify-between items-center w-[80%]">
+        <button
+          onClick={handleSubmit}
+          className="font-medium rounded-md text-lg px-5 py-2 bg-green-500 text-white "
+        >
+          Save & Exit
+        </button>
+        <button
+          onClick={() => handleSubmit("nextForm")}
+          className="font-medium rounded-md text-lg px-5 py-2 bg-green-600 text-white "
+        >
+          Save & Continue
+        </button>
+      </div>
     </div>
   );
 };
