@@ -4,7 +4,7 @@ import Link from "next/link";
 
 
 
-function page() {
+function Page() {
   return (
     <div className="h-screen flex justify-center items-center">
         <div className="w-[80%] lg:w-[35%] p-2 shadow-lg bg-[#403d6c]/20 rounded-md">
@@ -16,4 +16,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

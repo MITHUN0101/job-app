@@ -1,11 +1,17 @@
 "use client"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 function Page() {
   const router = useRouter();
-  router.push("/login")
+
+  useEffect(()=>{
+    router.push("/login");  
+  },[]);
+ 
   return (
+    
     <>
         {/* <title>Pacific Health System - login</title>
         <link rel="shortcut icon" href="/logo.png" />
