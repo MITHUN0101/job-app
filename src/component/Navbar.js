@@ -31,7 +31,7 @@ function Navbar() {
               </button> */}
             <Link
               href="/login"
-              className="px-5 py-2 font-semibold bg-red-900 text-white rounded-md text-lg"
+              className="px-5 py-2 font-semibold bg-[#000] text-white rounded-md text-lg"
             >
               Log out
             </Link>

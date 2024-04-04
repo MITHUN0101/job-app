@@ -275,8 +275,5 @@ function Page() {
   )
 }
 
-<<<<<<< HEAD
-export default Page
-=======
+
 export default Page;
->>>>>>> ad7e04f (fix: ignore env file)
