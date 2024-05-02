@@ -1,8 +1,7 @@
-"use client"
-  import { useRouter } from "next/navigation";
-
+"use client";
+import { useRouter } from "next/navigation";
+import ImageUpload from "../../component/ImageUpload/ImageUpload";
 import React from "react";
-
 
 const Page = () => {
   const router = useRouter();
@@ -12,6 +11,7 @@ const Page = () => {
   return (
     <>
       <div className="w-[80%] mx-auto py-3">
+        <ImageUpload />
         <div className="flex w-full my-5 mx-auto justify-between items-center">
           <button
             onClick={handleSubmit}
